@@ -1,2 +1,15 @@
-node_modules
-.env
+.env*
+.tsbuildinfo
+.idea
+.DS_Store
+.yarn
+!.yarn/releases
+!.yarn/plugins
+
+dist/**
+build/
+tmp/
+logs/
+
+node_modules/**
+yarn-error.log
