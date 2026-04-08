@@ -1,5 +1,7 @@
 import { App, MongoService } from '@artisans/anita';
 import 'dotenv/config';
+import { ProductCategoryServiceRouter } from './services/ProductCategoryService';
+import { ProductServiceRouter } from './services/ProductService/ProductServiceRouter';
 
 async function main() {
     MongoService.setUrl(process.env.MONGO_URI!);
@@ -12,7 +14,7 @@ async function main() {
                 version: '0.0.1'
             }
         },
-        routers: []
+        routers: [ProductCategoryServiceRouter(), ProductServiceRouter()]
     });
 
     await app.start(8000);
