@@ -5,6 +5,7 @@ import { ProductServiceRouter } from './services/ProductService/ProductServiceRo
 
 async function main() {
     MongoService.setUrl(process.env.MONGO_URI!);
+    const port = Number(process.env.PORT) || 8000;
 
     const app = new App({
         cors: {},
@@ -17,7 +18,8 @@ async function main() {
         routers: [ProductCategoryServiceRouter(), ProductServiceRouter()]
     });
 
-    await app.start(8000);
+    await app.start(port);
+    console.log(`Server running on port ${port}`);
 }
 
 void main();
