@@ -16,20 +16,20 @@ import { NO_BUNDLE_LIST } from '@artisans/anita';
 const noBundleList: Array<string> = [...NO_BUNDLE_LIST];
 
 const bundleModules = Object.keys(pkg.dependencies)
-  .filter((packageName) => !noBundleList.includes(packageName))
-  .map((packageName) => {
-    return new RegExp(`^${packageName}$`);
-  });
+    .filter((packageName) => !noBundleList.includes(packageName))
+    .map((packageName) => {
+        return new RegExp(`^${packageName}$`);
+    });
 
 export default defineConfig({
-  entry: ['src/index.ts'],
-  format: ['cjs'],
-  dts: true,
-  sourcemap: false,
-  clean: true,
-  bundle: true,
-  minify: true,
-  minifyIdentifiers: false,
-  splitting: false,
-  noExternal: bundleModules
+    entry: ['src/index.ts'],
+    format: ['cjs', 'esm'],
+    dts: false,
+    sourcemap: false,
+    clean: true,
+    bundle: true,
+    minify: true,
+    minifyIdentifiers: false,
+    splitting: false,
+    noExternal: bundleModules
 });
